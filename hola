@@ -7,8 +7,6 @@ with open('episodes.json') as archivo:
     datos = json.load(archivo)
 
 
-    print("La longitud de la variable 'Dato' es:", len(datos["results"]))
-    print('La variable datos es de tipo:', type(datos))
 
 with open('character.json') as archivo:
     
@@ -17,25 +15,6 @@ with open('character.json') as archivo:
 def clear_screen():
     
     return os.system('cls' if os.name == 'nt' else 'clear')
-
-def traduce():
-    
-    traduccion = {
-        'id': 'identificador',
-        'name': 'nombre',
-        'air_date': 'fecha emisión',
-        'characters': 'personajes',
-        'episode': 'episodio',
-        'url': 'enlace',
-        'created': 'fecha creación',
-        'count': 'conteo',
-        'pages': 'páginas',
-        'next': 'siguiente',
-        'prev': 'previo',
-    }
-
-
-    return traduccion
 
 def listado_caps():
     
@@ -73,17 +52,25 @@ def personajes():
     
     personaje_info = datos2["results"][personaje_data - 1]
     
-    print(f"Capitulos en los que aparece el personaje {personaje_data}:\n")
-    
+    print(f"Capitulos en los que aparece el personaje con ID: {personaje_data}:\n")
+    print("Name:", personaje_info["name"])
+    print("\nEstatus:", personaje_info["status"])
+    print("\nEspecie:", personaje_info["species"])
+    print("\nGenero:", personaje_info["gender"])
+    print("\nTipo:", personaje_info["type"])
+    print()
+        
     for num, episode in enumerate(personaje_info['episode'], start=1):
         
         print(f"{num}. {episode}")
 
+    print("\nEnlace:", personaje_info["url"])
+
 def encontrar_cap():
-    
-    id_cap = input("Ingrese el ID que desea: ")
-    
     try:
+        id_cap = input("Ingrese el ID que desea: ")
+    
+    
         
         id_cap_int = int(id_cap)
         
@@ -92,43 +79,46 @@ def encontrar_cap():
             episodio = datos["results"][id_cap_int - 1]
             
             print(f"\nDatos del episodio con ID {id_cap_int}\n")
-            print("Identificador:", episodio.get("id"))
-            print("Nombre:", episodio.get("name"))
-            print("Fecha de emisión:", episodio.get("air_date"))
-            print("Episodio:", episodio.get("episode"))
-
+            print("\nIdentificador:", episodio.get("id"))
+            print("\nNombre:", episodio.get("name"))
+            print("\nFecha de emisión:", episodio.get("air_date"))
+            print("\nEpisodio:", episodio.get("episode"))   
+            print()
+        
         else:
             
             print(f"No se encontró un episodio con ID {id_cap}")
     
     except ValueError:
         
-        print("ID de episodio no válido. Debe ser un número.")
+        print("\nID de episodio no válido. Debe ser un número.\n")
 
 def enlaces():
-
-    enlaces = int(input("Ingrese un id para ver los enlaces de ese capitulo: "))
-    print()
-    
-    enlace_info = datos["results"][enlaces - 1]
-    
-    for num, episode in enumerate(enlace_info['characters'], start=1):
+    try:
+        enlaces = int(input("Ingrese un id para ver los enlaces de ese capitulo: "))
         
-        print(f"{num}. {episode}")
+        enlace_info = datos["results"][enlaces - 1]
+        
+        print(f"\nEstos son los enlaces del episodio {enlaces}\n")
+
+        for num, episode in enumerate(enlace_info['characters'], start=1):
+            
+            print(f"{num}. {episode}")
+    
+    except ValueError:
+        print("\nID de enlace no válido. Debe ser un número.\n")
+
 
 while True:
     
     clear_screen()
-
-    print("\ningrese 1 para ver la informacion de Rick Sanchez\nIngrese 2 para ver la infomacionde de Morty Smith\nIngrese 3 para ver la informacion de Summer Smith\n")
-
-    personaje = input("> ")
     
-    if personaje == "1" or personaje == "2" or personaje == "3":
-        
-        personajes()
+    print("La longitud de la variable datos es:", len(datos["results"]))
+    print('La variable datos es de tipo:', type(datos))
+   
+  
     
-    print("\nIngrese 1 para la traducción de las llaves\nIngrese 2 para salir\nIngrese 3 para inmprimir la cantidad de capitulos\nIngrese 4 Consultar infornacion de un capitulo\nIngrese 5 para consultar urls")
+    print("\nIngrese 1 para salir\nIngrese 2 para ver los personajes disponibles\nIngrese 3 para inmprimir la cantidad de capitulos\nIngrese 4 Consultar infornacion de un capitulo\nIngrese 5 para consultar urls\n")
     
     usuario = input("> ")
     
@@ -136,13 +126,16 @@ while True:
     
     if usuario == "1":
         
-        traducion = traduce()
-        
-        print(datos)
+        break
 
     if usuario == "2":
         
-        break
+        print("\ningrese 1 para ver la informacion de Rick Sanchez\nIngrese 2 para ver la infomacionde de Morty Smith\nIngrese 3 para ver la informacion de Summer Smith\n")
+        personaje = input("> ")
+        
+        if personaje == "1" or personaje == "2" or personaje == "3":
+        
+            personajes()
 
     if usuario == "3":
 
@@ -152,8 +145,12 @@ while True:
         
         encontrar_cap()
     
-    if usuario == "5":
+    if usuario == "4":
         
         enlaces()
     
+    else:
+        continue
+    
+    print()
     input("Presione Enter para continuar... ")
