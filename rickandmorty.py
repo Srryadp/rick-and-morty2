@@ -113,6 +113,7 @@ def enlaces():
 
 
 while True:
+    
     input("Presione Enter para continuar... ")
     
     clear_screen()
