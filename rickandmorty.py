@@ -65,6 +65,8 @@ def personajes():
         print(f"{num}. {episode}")
 
     print("\nEnlace:", personaje_info["url"])
+    
+    print()
 
 def encontrar_cap():
     try:
@@ -110,10 +112,11 @@ def enlaces():
 
 
 while True:
+    input("Presione Enter para continuar... ")
     
     clear_screen()
     
-    print("La longitud de la variable datos es:", len(datos["results"]))
+    print("\nLa longitud de la variable datos es:", len(datos["results"]))
     print('La variable datos es de tipo:', type(datos))
    
   
@@ -153,5 +156,3 @@ while True:
         continue
     
     print()
-    input("Presione Enter para continuar... ")
-    clear_screen()
