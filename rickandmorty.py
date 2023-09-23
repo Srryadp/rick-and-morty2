@@ -52,14 +52,13 @@ def personajes():
 
     
     personaje_info = datos2["results"][personaje_data - 1]
-    
     print(f"Capitulos en los que aparece el personaje con ID: {personaje_data}:\n")
     print("Nombre:", personaje_info["name"])
     print("\nEstatus:", personaje_info["status"])
     print("\nEspecie:", personaje_info["species"])
     print("\nGenero:", personaje_info["gender"])
     print("\nTipo:", personaje_info["type"])
-    print()
+    print("\nEpisodios:\n")
         
     for num, episode in enumerate(personaje_info['episode'], start=1):
         
@@ -97,6 +96,7 @@ def encontrar_cap():
         print("\nID de episodio no válido. Debe ser un número.\n")
 
 def enlaces():
+    
     try:
         enlaces = int(input("Ingrese un id para ver los enlaces de ese capitulo: "))
         
