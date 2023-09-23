@@ -111,8 +111,6 @@ def enlaces():
 
 while True:
     
-    clear_screen()
-    
     print("La longitud de la variable datos es:", len(datos["results"]))
     print('La variable datos es de tipo:', type(datos))
    
@@ -154,3 +152,4 @@ while True:
     
     print()
     input("Presione Enter para continuar... ")
+    clear_screen()
