@@ -54,7 +54,7 @@ def personajes():
     personaje_info = datos2["results"][personaje_data - 1]
     
     print(f"Capitulos en los que aparece el personaje con ID: {personaje_data}:\n")
-    print("Name:", personaje_info["name"])
+    print("Nombre:", personaje_info["name"])
     print("\nEstatus:", personaje_info["status"])
     print("\nEspecie:", personaje_info["species"])
     print("\nGenero:", personaje_info["gender"])
