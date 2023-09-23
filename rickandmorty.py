@@ -21,6 +21,7 @@ def listado_caps():
     for num, caps in enumerate(datos["results"], start=1):
         print(f"{num}. - {caps['name']}")
 
+    print()
 
 def personajes():
     
@@ -106,7 +107,7 @@ def enlaces():
         for num, episode in enumerate(enlace_info['characters'], start=1):
             
             print(f"{num}. {episode}")
-    
+
     except ValueError:
         print("\nID de enlace no válido. Debe ser un número.\n")
 
