@@ -9,7 +9,7 @@ Para poder ejecutar el proyecto localmente se requiere lo siguente:
 
 ### Contenido 
 
-Nuestro codigo se trata sobre un archivo json que contiene diccionarios y listas, con el cual vamos a interacctuar con llaves para ingresar a esos datos que queremos saber de nuestro personaje favorito, el proceso esta automatizado asi que usted no tendra que tener problemas para ingresar esas llaves, solo piense en un id :D.
+Nuestro codigo se trata sobre un archivo json que contiene diccionarios y listas, con el cual vamos a interacctuar con llaves para ingresar a esos datos que queremos saber de nuestro personaje favorito, el proceso esta automatizado asi que usted no tendra problemas para ingresar esas llaves, solo piense en un id :D.
 
 ### Ejecucion 
 
